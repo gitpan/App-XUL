@@ -1,13 +1,31 @@
 --- #YAML:1.0
-name:                App-XUL
-version:             0.01
-abstract:            Perl extension for creating deployable platform-independent
-license:             ~
-author:              
+name:               App-XUL
+version:            0.02
+abstract:           Perl extension for creating deployable platform-independent
+author:
     - Tom Kirchner <tk@apple.com>
-generated_by:        ExtUtils::MakeMaker version 6.42
-distribution_type:   module
-requires:     
+license:            unknown
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    Data::Dumper:         0
+    Data::Dumper::Concise:  0
+    Directory::Scratch::Structured:  0
+    File::Copy::Recursive:  0
+    IO::Socket:           0
+    JSON:                 0
+    LWP::Simple:          0
+    Socket:               0
+    Time::HiRes:          0
+    URI::Escape:          0
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.56
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

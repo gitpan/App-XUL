@@ -125,4 +125,9 @@ $app->add(
 	),
 );
 
-$app->bundle(os => 'macosx', path => './TestApp.app', debug => 1);  
+$app->bundle(
+	os => 'macosx', 
+	path => './TestApp.app', 
+	debug => 1,
+	utilspath => '../../misc',
+);  

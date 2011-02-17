@@ -13,7 +13,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(AUTOLOAD);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $AUTOLOAD;
 
 our $Singleton;
@@ -65,8 +65,10 @@ sub add
 sub bundle
 {
   my ($self, %opts) = @_;
-  my $os   = $opts{'os'}    || die "Error: no os given - bundle(os => <string>)\n";
-  my $path = $opts{'path'}  || die "Error: no path given - bundle(path => <string>)\n";
+  
+  my $os = $opts{'os'} || die "Error: no os given - bundle(os => <string>)\n";
+  my $path = $opts{'path'} || die "Error: no path given - bundle(path => <string>)\n";
+  my $utilspath = $opts{'utilspath'} || die "Error: no utils path given - bundle(utilspath => <string>)\n";
   $self->{'debug'} = $opts{'debug'} || 0;
   
 	#print Dumper($self);
@@ -128,25 +130,25 @@ sub bundle
 		);
 		
 		# copy misc files into tmpdir
-		dircopy('../../misc/XUL.framework', 
+		dircopy($utilspath.'/XUL.framework', 
 			$tmpdir->base().'/'.$name.'.app/Contents/Frameworks/XUL.framework');
 			
-		fcopy('../../misc/Appicon.icns',
+		fcopy($utilspath.'/Appicon.icns',
 			$tmpdir->base().'/'.$name.'.app/Contents/Resources/'.$name.'.icns');
 
-		fcopy('../../misc/AppXUL.js', 
+		fcopy($utilspath.'/AppXUL.js', 
 			$tmpdir->base().'/'.$name.'.app/Contents/Resources/chrome/content/AppXUL.js');
 
 		#fcopy('../../misc/AppXULServer.js', 
 		#	$tmpdir->base().'/'.$name.'.app/Contents/Resources/chrome/content/AppXULServer.js');
 
-		fcopy('../../misc/server.pl', 
+		fcopy($utilspath.'/server.pl', 
 			$tmpdir->base().'/'.$name.'.app/Contents/Resources/perl/server/server.pl');
 
-		fcopy('../../lib/App/XUL/XML.pm', 
+		fcopy($utilspath.'/../lib/App/XUL/XML.pm',
 			$tmpdir->base().'/'.$name.'.app/Contents/Resources/perl/modules/App/XUL/XML.pm');
 
-		fcopy('../../lib/App/XUL/Object.pm', 
+		fcopy($utilspath.'/../lib/App/XUL/Object.pm', 
 			$tmpdir->base().'/'.$name.'.app/Contents/Resources/perl/modules/App/XUL/Object.pm');
 
 		# chmod certain files
