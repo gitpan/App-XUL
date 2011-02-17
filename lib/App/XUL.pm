@@ -13,7 +13,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(AUTOLOAD);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our $AUTOLOAD;
 
 our $Singleton;
@@ -130,7 +130,9 @@ sub bundle
 		);
 		
 		# copy misc files into tmpdir
-		dircopy($utilspath.'/XUL.framework', 
+		die "Error: no XUL.framework found in /Library/Frameworks - please install XUL framework from mozilla.org\n"
+			unless -d '/Library/Frameworks/XUL.framework';
+		dircopy('/Library/Frameworks/XUL.framework', 
 			$tmpdir->base().'/'.$name.'.app/Contents/Frameworks/XUL.framework');
 			
 		fcopy($utilspath.'/Appicon.icns',
