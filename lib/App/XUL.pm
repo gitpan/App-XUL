@@ -13,7 +13,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(AUTOLOAD);
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our $AUTOLOAD;
 
 our $Singleton;
@@ -415,7 +415,6 @@ EOFSRC
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
