@@ -13,7 +13,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(AUTOLOAD);
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 our $AUTOLOAD;
 
 our $Singleton;
@@ -434,8 +434,8 @@ standalone desktop applications based on XUL and XULRunner.
         Button(label => 'click', oncommand => sub {
           ID('container')->style('background:red');
         }),
-      );
-    )
+      ),
+    ),
   );
   
   $app->bundle(path => '/path/to/myapp.app', os => 'macosx');  
